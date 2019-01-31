@@ -1,4 +1,4 @@
-<%@ include file="header.jsp"%>
+<%@ include file="admin_header.jsp"%>
 <div class="container">
 	<ul class="nav nav-tabs">
 		<li class="active"><a data-toggle="tab" href="#home">Add event</a></li>
@@ -23,7 +23,7 @@
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlTextarea1">Description</label>
-						<textarea class="form-control rounded-0" rows="12" style="resize: none;"></textarea>
+						<textarea class="form-control rounded-0" rows="12" style="resize: none; background-color: silver;"></textarea>
 					</div>
 					
 				</form>
@@ -57,29 +57,43 @@
     					<tr>
     					   <td><label>Seat style</label></td>
     					   <td><select id="selectEventSeatType" ></select></td>
-						   <td><label>Number Of Seats</label></td>
-    					   <td><input type="text" id="numberOfSeats"   ></td>
+						   <td><label>Number of seats</label></td>
+    					   <td><input type="text" id="numberOfSeats"></td>
     					</tr>
     					<tr>
     					   <td><label>Date</label></td>
     					   <td><input type="text" id="eventDate"></td>
 						   <td><label>Start:</label></td>
-    					   <td><input type="text" id="begin" placeholder="12:00" ></td>
+    					   <td>
+    					   		<input type="text" style="width: 100px;" >
+    					   		<select id="startTime" style="width: 80px;">
+			  						<option>AM</option>
+			 						<option>PM</option>
+								</select>
+    					   </td>
     					</tr>
     					<tr>
     					   <td><label>End:</label></td>
-    					   <td><input type="text" id="end" placeholder="04:00"  ></td>
-						   <td><label>Price</label></td>
-    					   <td><input type="text" ></td>
-    					</tr>
-    					<tr>
-    					   <td><label>code</label></td>
+    					   <td><input type="text" style="width: 100px;" >
+    					   		<select id="endTime" style="width: 80px;">
+			  						<option>AM</option>
+			 						<option>PM</option>
+								</select></td>
+						   <td><label>Price</label>
+						   
+						   </td>
     					   <td>
-    					   		<select id="currencyCodeId">
+    					   		<input type="text" style="width: 100px;" >
+    					   		<select id="currencyCodeId" style="width: 80px;">
 			  						<option>EURO</option>
 			 						<option>DOLAR</option>
 								</select>
-							</td>
+    					   
+    					   </td>
+    					</tr>
+    					<tr>
+    					   <td><label>Reference</label></td>
+    					   <td><input type="text" ></td>
 						   <td></td>
     					   <td></td>
     					</tr>
@@ -91,9 +105,82 @@
 		</div>
 	</div>
 	<div id="menu1" class="tab-pane fade">
-		<h3></h3>
-		<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco
-			laboris nisi ut aliquip ex ea commodo consequat.</p>
+		   <!-- Static Table Start -->
+            <div class="data-table-area mg-b-15">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="sparkline13-list shadow-reset">
+                                <div class="sparkline13-hd">
+                                    <div class="main-sparkline13-hd">
+                                        <h1>Projects <span class="table-project-n">Data</span> Table</h1>
+                                        <div class="sparkline13-outline-icon">
+                                            <span class="sparkline13-collapse-link"><i class="fa fa-chevron-up"></i></span>
+                                            <span><i class="fa fa-wrench"></i></span>
+                                            <span class="sparkline13-collapse-close"><i class="fa fa-times"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sparkline13-graph">
+                                    <div class="datatable-dashv1-list custom-datatable-overright">
+                                        <div id="toolbar">
+                                            <select class="form-control">
+                                                <option value="">Export Basic</option>
+                                                <option value="all">Export All</option>
+                                                <option value="selected">Export Selected</option>
+                                            </select>
+                                        </div>
+                                        <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true" data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="state" data-checkbox="true"></th>
+                                                    <th data-field="id">ID</th>
+                                                    <th data-field="Type" data-editable="true">Type</th>
+                                                    <th data-field="Description" data-editable="true">Description</th>
+                                                    <th data-field="Country" data-editable="true">Country</th>
+                                                    <th data-field="City" data-editable="true">City</th>
+                                                    <th data-field="Address" data-editable="true">Address</th>
+                                                    <th data-field="Postal" data-editable="true">Postal code</th>
+                                                    <th data-field="Date" data-editable="true">Date</th>
+                                                    <th data-field="Start" data-editable="true">Start</th>
+                                                    <th data-field="End" data-editable="true">End</th>
+                                                    <th data-field="Price" data-editable="true">Price</th>
+                                                    <th data-field="Number" data-editable="true">Number of seats</th>
+                                                    <th data-field="Reference" data-editable="true">Reference</th>
+                                                    <th data-field="Action" >Delete</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>1</td>
+                                                    <td>Web Development</td>
+                                                    <td>admin@uttara.com</td>
+                                                    <td>+8801962067309</td>
+                                                    <td>Aber Ltd.</td>
+                                                    <td >1/6</td>
+                                                    <td>10%</td>
+                                                    <td>Jul 14, 2018</td>
+                                                    <td>$5455</td>
+                                                    <td>ddd</td>
+                                                    <td>50 usd</td>
+                                                    <td>100</td>
+                                                    <td>ref 1</td>
+                                                    <td ><input type="checkbox"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Static Table End -->
+            
+            
+            
 	</div>
 
 
@@ -1077,69 +1164,69 @@
 <!-- Chat Box End-->
 <!-- jquery
 		============================================ -->
-<script src="/js/vendor/jquery-1.11.3.min.js"></script>
+<script src="/admin/js/vendor/jquery-1.11.3.min.js"></script>
 <!-- bootstrap JS
 		============================================ -->
-<script src="/js/bootstrap.min.js"></script>
+<script src="/admin/js/bootstrap.min.js"></script>
 <!-- meanmenu JS
 		============================================ -->
-<script src="/js/jquery.meanmenu.js"></script>
+<script src="/admin/js/jquery.meanmenu.js"></script>
 <!-- mCustomScrollbar JS
 		============================================ -->
-<script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="/admin/js/jquery.mCustomScrollbar.concat.min.js"></script>
 <!-- sticky JS
 		============================================ -->
-<script src="/js/jquery.sticky.js"></script>
+<script src="/admin/js/jquery.sticky.js"></script>
 <!-- scrollUp JS
 		============================================ -->
-<script src="/js/jquery.scrollUp.min.js"></script>
+<script src="/admin/js/jquery.scrollUp.min.js"></script>
 <!-- scrollUp JS
 		============================================ -->
-<script src="/js/wow/wow.min.js"></script>
+<script src="/admin/js/wow/wow.min.js"></script>
 <!-- counterup JS
 		============================================ -->
-<script src="/js/counterup/jquery.counterup.min.js"></script>
-<script src="/js/counterup/waypoints.min.js"></script>
-<script src="/js/counterup/counterup-active.js"></script>
+<script src="/admin/js/counterup/jquery.counterup.min.js"></script>
+<script src="/admin/js/counterup/waypoints.min.js"></script>
+<script src="/admin/js/counterup/counterup-active.js"></script>
 <!-- jvectormap JS
 		============================================ -->
-<script src="/js/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
-<script src="/js/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<script src="/js/jvectormap/jvectormap-active.js"></script>
+<script src="/admin/js/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
+<script src="/admin/js/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<script src="/admin/js/jvectormap/jvectormap-active.js"></script>
 <!-- peity JS
 		============================================ -->
-<script src="/js/peity/jquery.peity.min.js"></script>
-<script src="/js/peity/peity-active.js"></script>
+<script src="/admin/js/peity/jquery.peity.min.js"></script>
+<script src="/admin/js/peity/peity-active.js"></script>
 <!-- sparkline JS
 		============================================ -->
-<script src="/js/sparkline/jquery.sparkline.min.js"></script>
-<script src="/js/sparkline/sparkline-active.js"></script>
+<script src="/admin/js/sparkline/jquery.sparkline.min.js"></script>
+<script src="/admin/js/sparkline/sparkline-active.js"></script>
 <!-- flot JS
 		============================================ -->
-<script src="/js/flot/jquery.flot.js"></script>
-<script src="/js/flot/jquery.flot.tooltip.min.js"></script>
-<script src="/js/flot/jquery.flot.spline.js"></script>
-<script src="/js/flot/jquery.flot.resize.js"></script>
-<script src="/js/flot/jquery.flot.pie.js"></script>
-<script src="/js/flot/jquery.flot.symbol.js"></script>
-<script src="/js/flot/jquery.flot.time.js"></script>
-<script src="/js/flot/dashtwo-flot-active.js"></script>
+<script src="/admin/js/flot/jquery.flot.js"></script>
+<script src="/admin/js/flot/jquery.flot.tooltip.min.js"></script>
+<script src="/admin/js/flot/jquery.flot.spline.js"></script>
+<script src="/admin/js/flot/jquery.flot.resize.js"></script>
+<script src="/admin/js/flot/jquery.flot.pie.js"></script>
+<script src="/admin/js/flot/jquery.flot.symbol.js"></script>
+<script src="/admin/js/flot/jquery.flot.time.js"></script>
+<script src="/admin/js/flot/dashtwo-flot-active.js"></script>
 <!-- data table JS
 		============================================ -->
-<script src="/js/data-table/bootstrap-table.js"></script>
-<script src="/js/data-table/tableExport.js"></script>
-<script src="/js/data-table/data-table-active.js"></script>
-<script src="/js/data-table/bootstrap-table-editable.js"></script>
-<script src="/js/data-table/bootstrap-editable.js"></script>
-<script src="/js/data-table/bootstrap-table-resizable.js"></script>
-<script src="/js/data-table/colResizable-1.5.source.js"></script>
-<script src="/js/data-table/bootstrap-table-export.js"></script>
+<script src="/admin/js/data-table/bootstrap-table.js"></script>
+<script src="/admin/js/data-table/tableExport.js"></script>
+<script src="/admin/js/data-table/data-table-active.js"></script>
+<script src="/admin/js/data-table/bootstrap-table-editable.js"></script>
+<script src="/admin/js/data-table/bootstrap-editable.js"></script>
+<script src="/admin/js/data-table/bootstrap-table-resizable.js"></script>
+<script src="/admin/js/data-table/colResizable-1.5.source.js"></script>
+<script src="/admin/js/data-table/bootstrap-table-export.js"></script>
 <!-- main JS
 		============================================ -->
-<script src="/js/main.js"></script>
-<script src="/js/country_list.js"></script>
-<script src="/js/event_seat_type.js"></script>
-<script src="/js/event_type.js"></script>
+<script src="/admin/js/main.js"></script>
+<script src="/admin/js/country_list.js"></script>
+<script src="/admin/js/event_seat_type.js"></script>
+<script src="/admin/js/event_type.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
 <script>

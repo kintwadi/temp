@@ -92,7 +92,7 @@ function MenuBar(data,lang){
 	
 	this.createBigCard = (command)=>{
 		
-		var url = "get_big_card/"+command;
+		var url = "list_manager/"+command;
 		$.get(url, function(data, status){
 			
 			var big_card = document.querySelector("#big_card");

@@ -1,6 +1,8 @@
 body{
 	
-	background-color: white;
+	
+	background-image: url("/images/bg.png");
+	
 }
 
  /* Set black background color, white text and some padding */
