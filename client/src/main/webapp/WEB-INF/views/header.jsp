@@ -252,7 +252,7 @@
 
 	<!-- Modal -->
 	<form action ="signup" method="post">
-	<div class="modal fade" id="signupModal" role="dialog">
+	<div class="modal modal-adminpro-general default-popup-PrimaryModal fade bounceIn animated" id="signupModal" role="dialog">
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
