@@ -1,3 +1,4 @@
+
 <%@ include file="admin_header.jsp"%>
 <div class="container">
 	<ul class="nav nav-tabs">
@@ -8,25 +9,31 @@
 	</ul>
 </div>
 <div class="tab-content">
+
 	<div id="home" class="tab-pane fade in active">
+	<spring:url value="profile" var="path"></spring:url>
+	<form action = "${path}/reg_event" method="post">
 		<div class="container">
-
+			
 			<div class="col-sm-4" style="background-color: lavender;">
-
-				<form>
+					
+				
 					<div class="form-group">
-						<label for="formGroupExampleInput">Type</label> 
-							<select id="selectEventType">
+						<label for="formGroupExampleInput">Event type</label> 
+							<select id="s_event_type" name="s_event_type">
 							
 							</select>
-							<input type="text" id="otherEvent" style="display:none" placeholder=" other type">
+							<input type="text" id="other_event" name="other_event" style="display:none" placeholder=" other type">
+							<input type="hidden" id="year" name="year">
+							<input type="hidden" id="month" name="month">
+							<input type="hidden" id="day" name="day">
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlTextarea1">Description</label>
-						<textarea class="form-control rounded-0" rows="12" style="resize: none; background-color: silver;"></textarea>
+						<textarea id="description" name ="description"class="form-control rounded-0" rows="12" style="resize: none; background-color: silver;"></textarea>
 					</div>
 					
-				</form>
+				
 
 
 			</div>
@@ -43,30 +50,30 @@
     				</thead>
     				<tbody>
     					<tr>
-    					   <td><label for="selectCoutryListId">Country</label></td>
-    					   <td><select id="selectCoutryListId" class=""></select></td>
+    					   <td><label for="s_country_list">Country</label></td>
+    					   <td><select id="s_country_list" name = "s_country_list" class=""></select></td>
 						   <td><label>City</label></td>
-    					   <td><input type="text" ></td>
+    					   <td><input type="text" id="city" name ="city" ></td>
     					</tr>
     					<tr>
     					   <td><label>Street</label></td>
-    					   <td><input type="text" ></td>
+    					   <td><input type="text"  id="street" name="street"></td>
 						   <td><label>Postal code</label></td>
-    					   <td><input type="text" ></td>
+    					   <td><input type="text" id="postal_code" name="postal_code"></td>
     					</tr>
     					<tr>
     					   <td><label>Seat style</label></td>
-    					   <td><select id="selectEventSeatType" ></select></td>
+    					   <td><select id="s_event_seat_type" name="s_event_seat_type"></select></td>
 						   <td><label>Number of seats</label></td>
-    					   <td><input type="text" id="numberOfSeats"></td>
+    					   <td><input type="text" id="number_of_seats" name="number_of_seats" ></td>
     					</tr>
     					<tr>
     					   <td><label>Date</label></td>
-    					   <td><input type="text" id="eventDate"></td>
+    					   <td><input type="text" id="event_date" name="event_date"></td>
 						   <td><label>Start:</label></td>
     					   <td>
-    					   		<input type="text" style="width: 100px;" >
-    					   		<select id="startTime" style="width: 80px;">
+    					   		<input type="text" id="start_time" name="start_time" style="width: 100px;" >
+    					   		<select id="s_time_type" name="s_time_type" style="width: 80px;">
 			  						<option>AM</option>
 			 						<option>PM</option>
 								</select>
@@ -74,8 +81,8 @@
     					</tr>
     					<tr>
     					   <td><label>End:</label></td>
-    					   <td><input type="text" style="width: 100px;" >
-    					   		<select id="endTime" style="width: 80px;">
+    					   <td><input type="text" id="end_time"  name="end_time" style="width: 100px;" >
+    					   		<select id="s_end_type"  name ="s_end_type" style="width: 80px;">
 			  						<option>AM</option>
 			 						<option>PM</option>
 								</select></td>
@@ -83,8 +90,8 @@
 						   
 						   </td>
     					   <td>
-    					   		<input type="text" style="width: 100px;" >
-    					   		<select id="currencyCodeId" style="width: 80px;">
+    					   		<input type="text" id="price" name = "price" style="width: 100px;" >
+    					   		<select id="s_currency" name="s_currency"  style="width: 80px;">
 			  						<option>EURO</option>
 			 						<option>DOLAR</option>
 								</select>
@@ -93,16 +100,18 @@
     					</tr>
     					<tr>
     					   <td><label>Reference</label></td>
-    					   <td><input type="text" ></td>
+    					   <td><input type="text" id="reference" name="reference" ></td>
 						   <td></td>
     					   <td></td>
     					</tr>
-    					
+    				
     				</tbody>
 				</table>
-		
+		<input type="submit" value="Submit"/>
 		</div>
+	
 		</div>
+		</form>
 	</div>
 	<div id="menu1" class="tab-pane fade">
 		   <!-- Static Table Start -->
@@ -1230,16 +1239,32 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
 <script>
-countryList("#selectCoutryListId");
+countryList("#s_country_list");
 
-eventSeatType("#selectEventSeatType");
-eventTypeSelect("#selectEventType");
+eventSeatType("#s_event_seat_type");
+eventTypeSelect("#s_event_type");
 
+var jsDate  = null;
 $( function() {
 	
-    $( "#eventDate" ).datepicker();
+	var today = new Date();
+	
+	$( "#event_date" ).datepicker("setDate",today);
   } 
  );
+ 
+var date = document.querySelector("#event_date");
+date.addEventListener('click',fromDate);
+ function fromDate(){
+	 
+	 var currentDate = $( "#event_date" ).datepicker( "getDate" );
+	 $( ".event_date" ).datepicker( "refresh" );
+	 console.log("date: "+currentDate);
+	 var c = document.querySelector("#event_date");
+	
+	 console.log("data: "+c.value);
+ }
+
   
 /* $('#begin').timepicker({ 'step': 15 });
 $('#end').timepicker({

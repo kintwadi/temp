@@ -15,44 +15,16 @@
 
 </head>
 <body>
+	<input type="hidden" id="page" value="${page}">
 	<br>
-	<div class="container" id="cardsContainer">
-		
-	<!-- 	<h4 style="float: right;" class="btn btn-default ">View all</h4>
-		<h2 class="btn btn-default ">RECENTLY ADDED</h2>
-		 -->
-	<!-- 	<div class="panel panel-default">
 
-			<div class="panel-body">
-
-				<div class="container">
-				
-					<div id="pageContent"></div>
-					
-				</div>
-				
-				<div class="row">
-				
-					<div class="col-sm-12">
-
-						<ul id="pagination-added-recently" class="pagination sm pagination-circle pg-blue">
-
-						</ul>
-						
-					</div>
-				</div>
-			</div>
-			
-			<div class="panel-footer clearfix">
-				<div class="pull-right">
-					<a href="#"></a> <a href="#" class="btn btn-default">top</a>
-				</div>
-			</div>
-		</div> -->
-
-	</div>
+	<div class="container well" id="cardsContainer"></div>
 
 	<script>
+	
+	var page = document.querySelector("#page");
+	createApplicationLayout("en", page);
+	
 		function createDiv(page) {
 
 			var pageContent = document.querySelector('#pageContent');

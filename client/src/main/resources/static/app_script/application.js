@@ -1,4 +1,23 @@
+var root = document.querySelector("#root").innerHTML;
 
+var currency_symbols = {
+    'USD': '$', // US Dollar
+    'EUR': '€', // Euro
+    'CRC': '₡', // Costa Rican Colón
+    'GBP': '£', // British Pound Sterling
+    'ILS': '₪', // Israeli New Sheqel
+    'INR': '₹', // Indian Rupee
+    'JPY': '¥', // Japanese Yen
+    'KRW': '₩', // South Korean Won
+    'NGN': '₦', // Nigerian Naira
+    'PHP': '₱', // Philippine Peso
+    'PLN': 'zł', // Polish Zloty
+    'PYG': '₲', // Paraguayan Guarani
+    'THB': '฿', // Thai Baht
+    'UAH': '₴', // Ukrainian Hryvnia
+    'VND': '₫', // Vietnamese Dong
+    'kwz': 'KZ' // Angola kwanza
+};
 var menuData = {
 
 		logo:"logo",
@@ -12,6 +31,26 @@ var menuData = {
 
 
 };
+var cardProps ={
+
+
+        containerId: "#card_up_container",
+        containerClass: "",
+        rowId: "r1",
+        rowClass: "card_up_r",
+        collId: "c1",
+        collClass: "card_up_c",
+        imgSrc: "",
+        imgWidth :"width:100%",
+        title:"Blue night",
+        description:"",
+        date: "Febrary .20. 2019 - 20H30",
+        buy:"Buy",
+        link:"",
+        price: " "
+        	
+       
+    }
 
 var flag = true;
 
@@ -46,7 +85,7 @@ function MenuBar(data,lang){
 
 			if(flag){
 				a = document.querySelector(".category");
-				a[i].setAttribute('href',"category/"+categories[i]["page"]);
+				a[i].setAttribute('href',root+"/category/"+categories[i]["page"]);
 				flag = false;
 			}else{
 				a = document.querySelector("category");
@@ -59,7 +98,7 @@ function MenuBar(data,lang){
 
 	this.listCategories = (menu,lang)=>{
 
-		var url = "list_categories/"+lang;
+		var url = root+"/list_categories/"+lang;
 		
 		$.get(url, function(data, status){
 
@@ -73,7 +112,7 @@ function MenuBar(data,lang){
 				var a = document.createElement("a");
 				a.addEventListener('click',categoryListener,false);
 				a.param = categories;
-				a.innerHTML = categories[i]["name"].toLowerCase();
+				a.innerHTML = categories[i]["name"].toUpperCase();
 				a.setAttribute('class',"category");
 				li.appendChild(a);
 				category_container.appendChild(li);
@@ -92,7 +131,7 @@ function MenuBar(data,lang){
 	
 	this.createBigCard = (command)=>{
 		
-		var url = "get_big_card/"+command;
+		var url = root+"/get_big_card/"+command;
 		$.get(url, function(data, status){
 			
 			var big_card = document.querySelector("#big_card");
@@ -105,7 +144,7 @@ function MenuBar(data,lang){
 			
 			big_card_title.textContent = data["manager"][0].title;
 			big_card_year.textContent = data["event"].year;
-			var image = "/images/"+data["manager"][0].imagePath;
+			var image = "/images/m8.png";
 			
 			big_card_day.textContent = data["event"].day;
 			big_card_month.textContent = data["event"].month;
@@ -123,71 +162,93 @@ function MenuBar(data,lang){
 			
 		});
 	}
+	cardBuilder = (cardProps,command)=>{
+		
+		var card_container = document.querySelector(cardProps.containerId);
+	      
+        var card_row = document.createElement("div");
+
+        //card_row.setAttribute('id',cardProps.rowId);
+        card_row.setAttribute('class',cardProps.rowClass);
+
+        var cardColl = document.createElement("div");
+        //cardColl.setAttribute('id',cardProps.collId);
+        cardColl.setAttribute('class',cardProps.collClass);
+
+        var img = document.createElement('img');
+        img.setAttribute('style',cardProps.imgWidth);
+        img.src=cardProps.imgSrc;
+        
+        var details = document.createElement("div");
+        details.setAttribute('class',"alert alert-success");
+        var title = document.createElement('h4');
+        title.appendChild(document.createTextNode(cardProps.title));
+        details.appendChild(title);
+        details.appendChild(document.createElement('hr'));
+        
+        details.appendChild(document.createElement("br"));
+        var date = document.createElement("h5");
+        date.setAttribute('style',"text-align: center;margin-top:-5px; color:rgb(111, 84, 153)");
+        date.appendChild(document.createTextNode(cardProps.date));
+        details.appendChild(date);
+        var price = document.createElement('h5');
+        price.setAttribute('style',"float:left; margin-top:-5px; color:rgb(111, 84, 153)");
+        price.appendChild(document.createTextNode(cardProps.price));
+        details.appendChild(price);
+        //details.appendChild(document.createElement('hr'));
+        var buyLink = document.createElement('a');
+        
+        buyLink.setAttribute('href',root+"/"+cardProps.link);
+        buyLink.setAttribute('style',"float:right; margin-top:-20px;border-radius: 5px; color:red");
+        buyLink.setAttribute('class',"btn ");
+        buyLink.appendChild(document.createTextNode(cardProps.buy));
+       
+        details.appendChild(buyLink);
+       
+        cardColl.appendChild(img);
+        cardColl.appendChild(details);
+		
+        card_row.appendChild(cardColl);
+
+        card_container.appendChild(card_row);
+		
+	}
+	this.loadCard =(command) =>{
+		
+		var url = "get_big_card/"+command;
+		
+		$.get(url, function(data, status){
+			
+			console.log("data: "+JSON.stringify(data));
+			
+			cardProps.imgSrc = "/images/"+data[0].image;
+			cardProps.title = data[0].title;
+			cardProps.date = data[0].day+"."+data[0].month+"."+data[0].year;
+			cardProps.price = "Price : "+data[0].price+" "+ data[0].currencyCode;
+			cardProps.link = "card/"+data[0].eventId;
+			cardBuilder(cardProps,command);
+	
+			cardProps.imgSrc = "/images/"+data[1].image;
+			cardProps.date = data[1].day+"."+data[1].month+"."+data[1].year;
+			cardProps.title = data[1].title;
+			cardProps.price = "Price : "+ data[1].price+" "+data[1].currencyCode;
+			cardProps.link = "card/"+data[1].eventId;
+			cardBuilder(cardProps,command);
+			
+			cardProps.imgSrc = "/images/"+data[2].image;
+			cardProps.date = data[2].day+"."+data[2].month+"."+data[2].year;
+			cardProps.title = data[2].title;
+			cardProps.price = "Price : "+data[2].price+" "+ data[2].currencyCode;
+			cardProps.link = "card/"+data[2].eventId;
+			cardBuilder(cardProps,command);
+	
+		});
+	}
 	
 }
 
-class SliderClip {
 
-	constructor(el) {
-		this.el = el;
-		this.Slides = Array.from(this.el.querySelectorAll('li'));
-		this.Nav = Array.from(this.el.querySelectorAll('nav a'));
-		this.totalSlides = this.Slides.length;
-		this.current = 0;
-		this.autoPlay = true; //true or false
-		this.timeTrans = 4000; //transition time in milliseconds
-		this.IndexElements = [];
-
-		for(let i=0;i<this.totalSlides;i++) {
-			this.IndexElements.push(i);
-		}
-
-		this.setCurret();
-		this.initEvents();
-	}
-	setCurret() {
-		this.Slides[this.current].classList.add('current');
-		this.Nav[this.current].classList.add('current_dot');
-	}
-	initEvents() {
-		const self = this;
-
-		this.Nav.forEach((dot) => {
-			dot.addEventListener('click', (ele) => {
-				ele.preventDefault();
-				this.changeSlide(this.Nav.indexOf(dot));
-			})
-		})
-
-		this.el.addEventListener('mouseenter', () => self.autoPlay = false);
-		this.el.addEventListener('mouseleave', () => self.autoPlay = true);
-
-		setInterval(function() {
-			if (self.autoPlay) {
-				self.current = self.current < self.Slides.length-1 ? self.current + 1 : 0;
-				self.changeSlide(self.current);
-			}
-		}, this.timeTrans);
-
-	}
-	changeSlide(index) {
-
-		this.Nav.forEach((allDot) => allDot.classList.remove('current_dot'));
-
-		this.Slides.forEach((allSlides) => allSlides.classList.remove('prev', 'current'));
-
-		const getAllPrev = value => value < index;
-
-		const prevElements = this.IndexElements.filter(getAllPrev);
-
-		prevElements.forEach((indexPrevEle) => this.Slides[indexPrevEle].classList.add('prev'));
-
-		this.Slides[index].classList.add('current');
-		this.Nav[index].classList.add('current_dot');
-	}
-}
-
-function createApplicationLayout(lang){
+function createApplicationLayout(lang,page){
 
 		var menu = null ;
 		// setup the language
@@ -196,14 +257,20 @@ function createApplicationLayout(lang){
 			menu = new MenuBar(menuData);
 			menu.listCategories(menu,lang);
 			menu.writeMenuContent(menu,lang);
-			menu.createBigCard("big_card");
-			const slider = new SliderClip(document.querySelector('.slider'));
+			//menu.createBigCard("big_card");
+			if(page.value != "composer"){
+				menu.loadCard("big_card");
+			}else{
+				var search = document.querySelector(".search");
+				search.style.display ="none";
+			}
+			
+		
 			
 		}
 
 }
 
-createApplicationLayout("en");
 	
 	
 

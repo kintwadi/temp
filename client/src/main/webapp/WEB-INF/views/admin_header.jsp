@@ -1,5 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -180,7 +183,7 @@
                                     <i class="fa fa-bars"></i>
                                 </button>
                                 <div class="admin-logo logo-wrap-pro">
-                                    <a href="#"><img src="img/logo/log.png" alt="" />
+                                    <a href="#"><img src="/admin/img/logo/log.png" alt="" />
                                     </a>
                                 </div>
                             </div>
@@ -218,7 +221,7 @@
                                                     <li>
                                                         <a href="#">
                                                             <div class="message-img">
-                                                                <img src="img/message/1.jpg" alt="">
+                                                                <img src="/admin/img/message/1.jpg" alt="">
                                                             </div>
                                                             <div class="message-content">
                                                                 <span class="message-date">16 Sept</span>
@@ -230,7 +233,7 @@
                                                     <li>
                                                         <a href="#">
                                                             <div class="message-img">
-                                                                <img src="/img/message/4.jpg" alt="">
+                                                                <img src="/admin/img/message/4.jpg" alt="">
                                                             </div>
                                                             <div class="message-content">
                                                                 <span class="message-date">16 Sept</span>
@@ -242,7 +245,7 @@
                                                     <li>
                                                         <a href="#">
                                                             <div class="message-img">
-                                                                <img src="/img/message/3.jpg" alt="">
+                                                                <img src="/admin/img/message/3.jpg" alt="">
                                                             </div>
                                                             <div class="message-content">
                                                                 <span class="message-date">16 Sept</span>
@@ -254,7 +257,7 @@
                                                     <li>
                                                         <a href="#">
                                                             <div class="message-img">
-                                                                <img src="img/message/2.jpg" alt="">
+                                                                <img src="/admin/img/message/2.jpg" alt="">
                                                             </div>
                                                             <div class="message-content">
                                                                 <span class="message-date">16 Sept</span>
@@ -333,17 +336,17 @@
                                             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                                                 <span class="adminpro-icon adminpro-user-rounded header-riht-inf"></span>
                                                 <span class="admin-name">User</span>
-                                                <span class="author-project-icon adminpro-icon adminpro-down-arrow"></span>
+                                                <span class="author-project-icon adminpro-icon adminpro-down-arrow" style="display: none;"></span>
                                             </a>
                                             <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated flipInX">
-                                                <li><a href="#"><span class="adminpro-icon adminpro-home-admin author-log-ic"></span>My Account</a>
+                                               
+                                                <!-- <li><a href="#"><span class="adminpro-icon adminpro-user-rounded author-log-ic"></span>Profile</a>
+                                                </li> -->
+                                                 <li><a href="#"><span class="adminpro-icon adminpro-settings author-log-ic"></span>Settings</a>
                                                 </li>
-                                                <li><a href="#"><span class="adminpro-icon adminpro-user-rounded author-log-ic"></span>My Profile</a>
+                                                <li><a href="#"><span class="adminpro-icon adminpro-money author-log-ic"></span>Billing</a>
                                                 </li>
-                                                <li><a href="#"><span class="adminpro-icon adminpro-money author-log-ic"></span>User Billing</a>
-                                                </li>
-                                                <li><a href="#"><span class="adminpro-icon adminpro-settings author-log-ic"></span>Settings</a>
-                                                </li>
+                                               
                                                 <li><a href="#"><span class="adminpro-icon adminpro-locked author-log-ic"></span>Log Out</a>
                                                 </li>
                                             </ul>
@@ -352,12 +355,12 @@
 
                                             <div role="menu" class="admintab-wrap menu-setting-wrap menu-setting-wrap-bg dropdown-menu animated flipInX">
                                                 <ul class="nav nav-tabs custon-set-tab">
-                                                    <li class="active"><a data-toggle="tab" href="#Notes">Notes</a>
+                                                    <li class="active"><a data-toggle="tab" href="#Notes">Updates</a>
                                                     </li>
-                                                    <li><a data-toggle="tab" href="#Projects">Projects</a>
+                                                    <!-- <li><a data-toggle="tab" href="#Projects">Projects</a>
                                                     </li>
                                                     <li><a data-toggle="tab" href="#Settings">Settings</a>
-                                                    </li>
+                                                    </li> -->
                                                 </ul>
 
                                                 <div class="tab-content">
@@ -425,7 +428,7 @@
                                                                         <a href="#">
                                                                             <div class="notes-list-flow">
                                                                                 <div class="notes-img">
-                                                                                    <img src="img/notification/4.jpg" alt="" />
+                                                                                    <img src="/admin/img/notification/4.jpg" alt="222" />
                                                                                 </div>
                                                                                 <div class="notes-content">
                                                                                     <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
@@ -438,7 +441,7 @@
                                                                         <a href="#">
                                                                             <div class="notes-list-flow">
                                                                                 <div class="notes-img">
-                                                                                    <img src="img/notification/5.jpg" alt="" />
+                                                                                    <img src="/admin/img/notification/5.jpg" alt="" />
                                                                                 </div>
                                                                                 <div class="notes-content">
                                                                                     <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
@@ -451,7 +454,7 @@
                                                                         <a href="#">
                                                                             <div class="notes-list-flow">
                                                                                 <div class="notes-img">
-                                                                                    <img src="img/notification/6.jpg" alt="" />
+                                                                                    <img src="/admin/img/notification/6.jpg" alt="" />
                                                                                 </div>
                                                                                 <div class="notes-content">
                                                                                     <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
@@ -464,7 +467,7 @@
                                                                         <a href="#">
                                                                             <div class="notes-list-flow">
                                                                                 <div class="notes-img">
-                                                                                    <img src="img/notification/1.jpg" alt="" />
+                                                                                    <img src="/admin/img/notification/1.jpg" alt="" />
                                                                                 </div>
                                                                                 <div class="notes-content">
                                                                                     <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
@@ -477,7 +480,7 @@
                                                                         <a href="#">
                                                                             <div class="notes-list-flow">
                                                                                 <div class="notes-img">
-                                                                                    <img src="img/notification/2.jpg" alt="" />
+                                                                                    <img src="/admin/img/notification/2.jpg" alt="" />
                                                                                 </div>
                                                                                 <div class="notes-content">
                                                                                     <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
@@ -490,7 +493,7 @@
                                                                         <a href="#">
                                                                             <div class="notes-list-flow">
                                                                                 <div class="notes-img">
-                                                                                    <img src="img/notification/3.jpg" alt="" />
+                                                                                    <img src="/admin/img/notification/3.jpg" alt="" />
                                                                                 </div>
                                                                                 <div class="notes-content">
                                                                                     <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
@@ -810,10 +813,10 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <ul class="breadcome-menu">
-                                            <li><a href="#">Home</a> <span class="bread-slash">/</span>
+                                            <li>
+                                            	<a href="#" class="btn btn-block btn-xs btn-info">get full access</a>
                                             </li>
-                                            <li><span class="bread-blod">Dashboard 2</span>
-                                            </li>
+                                            
                                         </ul>
                                     </div>
                                 </div>
@@ -833,10 +836,7 @@
                                     <ul class="mobile-menu-nav">
                                         <li><a data-toggle="collapse" data-target="#Charts" href="#">Home <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
                                             <ul class="collapse dropdown-header-top">
-                                                <li><a href="dashboard.html">Dashboard v.1</a>
-                                                </li>
-                                                <li><a href="dashboard-2.html">Dashboard v.2</a>
-                                                </li>
+                                               
                                                 <li><a href="analytics.html">Analytics</a>
                                                 </li>
                                                 <li><a href="widgets.html">Widgets</a>
@@ -869,22 +869,11 @@
                                         </li>
                                         <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">Interface <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
                                             <ul id="Miscellaneousmob" class="collapse dropdown-header-top">
-                                                <li><a href="google-map.html">Google Map</a>
-                                                </li>
+                                                
                                                 <li><a href="data-maps.html">Data Maps</a>
                                                 </li>
-                                                <li><a href="pdf-viewer.html">Pdf Viewer</a>
-                                                </li>
-                                                <li><a href="x-editable.html">X-Editable</a>
-                                                </li>
-                                                <li><a href="code-editor.html">Code Editor</a>
-                                                </li>
-                                                <li><a href="tree-view.html">Tree View</a>
-                                                </li>
-                                                <li><a href="preloader.html">Preloader</a>
-                                                </li>
-                                                <li><a href="images-cropper.html">Images Cropper</a>
-                                                </li>
+                                              
+                                                
                                             </ul>
                                         </li>
                                         <li><a data-toggle="collapse" data-target="#Chartsmob" href="#">Charts <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
@@ -913,42 +902,11 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li><a data-toggle="collapse" data-target="#formsmob" href="#">Forms <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
-                                            <ul id="formsmob" class="collapse dropdown-header-top">
-                                                <li><a href="basic-form-element.html">Basic Form Elements</a>
-                                                </li>
-                                                <li><a href="advance-form-element.html">Advanced Form Elements</a>
-                                                </li>
-                                                <li><a href="password-meter.html">Password Meter</a>
-                                                </li>
-                                                <li><a href="multi-upload.html">Multi Upload</a>
-                                                </li>
-                                                <li><a href="tinymc.html">Text Editor</a>
-                                                </li>
-                                                <li><a href="dual-list-box.html">Dual List Box</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a data-toggle="collapse" data-target="#Appviewsmob" href="#">App views <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
-                                            <ul id="Appviewsmob" class="collapse dropdown-header-top">
-                                                <li><a href="basic-form-element.html">Basic Form Elements</a>
-                                                </li>
-                                                <li><a href="advance-form-element.html">Advanced Form Elements</a>
-                                                </li>
-                                                <li><a href="password-meter.html">Password Meter</a>
-                                                </li>
-                                                <li><a href="multi-upload.html">Multi Upload</a>
-                                                </li>
-                                                <li><a href="tinymc.html">Text Editor</a>
-                                                </li>
-                                                <li><a href="dual-list-box.html">Dual List Box</a>
-                                                </li>
-                                            </ul>
-                                        </li>
+                                      
+                                       
                                         <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Pages <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
                                             <ul id="Pagemob" class="collapse dropdown-header-top">
-                                                <li><a href="login.html">Login</a>
-                                                </li>
+                                               
                                                 <li><a href="register.html">Register</a>
                                                 </li>
                                                 <li><a href="captcha.html">Captcha</a>
@@ -990,10 +948,9 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <ul class="breadcome-menu">
-                                            <li><a href="#">Home</a> <span class="bread-slash">/</span>
+                                            <li><a href="#">Profile</a> <span class="bread-slash">/</span>
                                             </li>
-                                            <li><span class="bread-blod">Dashboard</span>
-                                            </li>
+                                            
                                         </ul>
                                     </div>
                                 </div>

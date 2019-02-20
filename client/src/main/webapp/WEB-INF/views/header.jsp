@@ -31,23 +31,57 @@
 
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	
+	
 
 <style>
-.modal-header, h4, .close {
-	background-color: #5cb85c;
-	color: white !important;
+ h4{
+	
+	
 	text-align: center;
-	font-size: 30px;
+	font-size: 20px;
+}
+img {
+	border-radius:5px;
 }
 
 .modal-footer {
 	background-color: #f9f9f9;
 }
+
+.center {
+  margin: auto;
+  width: 100%;
+  border: 1px solid silver;
+  padding: 5px;
+  background-image: url("/images/m8.png");
+}
+.big_card_image{
+	width: 100%;
+	
+	
+}
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.card_up_c {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.card_up_r::after {
+  content: "";
+  clear: both;
+  
+}
+
 </style>
 </head>
-<body>
+<body >
+<span id ="root" style="display: none">${context}</span>
 	<div class="container">
-		<nav class="navbar  navbar-default navbar-fixed-top"> <span
+	
+		<nav class="navbar navbar-default navbar-fixed-top "> <span
 			id="brand" class=""
 			style="float: left; border-radius: 5px; margin-top: 5px;"></span>
 
@@ -68,7 +102,7 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					<li><a
-						class="btn btn-default btn-outline btn-circle collapsed"
+						class="btn  btn-outline btn-circle collapsed"
 						data-toggle="collapse" href="#nav-collapse1" aria-expanded="false"
 						aria-controls="nav-collapse1" id="categories">Categories</a></li>
 					<li><a href="#"><span class="glyphicon glyphicon-earphone"
@@ -110,93 +144,27 @@
 						<span class="fa fa-search  "></span>
 					</span>
 				</div>
-				<!-- /input-group -->
+				
 			</div>
-			<!-- /.col-lg-6 -->
+		
 		</div>
-		<!-- /.row -->
+		
 
 	</div>
 
+	<div class="container">
+	
+		<div id="card_up_container">
 
-	<br>
-	<br>
-	<div class="container text-center">
-
-		<section class="intro">
-		<div class="left">
-
-			<div id="big_card">
-
-				<a href="#" target="_blank"></a>
-				<div id="big_card_caption" class=" ">
-
-					<div class="card well  " style="width: 18rem;">
-
-						<span class="" id="big_card_title"> </span>
-
-						<div class="card-body ">
-
-							<div class="card-text">
-
-								<h1 id="big_card_day"></h1>
-
-								<h2 class="" id="big_card_month"></h2>
-								<span class="" id="big_card_year"></span>
-							</div>
-
-						</div>
-					</div>
-					<div class="big_card_more_info btn btn-info">
-						<span id="big_card_price"></span> &nbsp;&nbsp;<i
-							class="fa fa-shopping-cart btn btn-success"> add to cart</i>
-
-					</div>
-					<span class="btn btn-danger"
-						style="float: right; border-radius: 45px;">+</span>
-				</div>
-			</div>
-
+		
 		</div>
-
-		<div class="slider">
-			<ul>
-				<li
-					style="background-image: url(https://images.unsplash.com/photo-1458640904116-093b74971de9?crop=entropy&amp;fit=crop&amp;fm=jpg&amp;h=675&amp;ixjsv=2.1.0&amp;ixlib=rb-0.3.5&amp;q=80&amp;w=1375)">
-					<div class="center-y">
-						<h3>Slider Title #1</h3>
-						<a href="#">View Project</a>
-					</div>
-				</li>
-				<li
-					style="background-image: url(https://images.unsplash.com/photo-1451906278231-17b8ff0a8880?crop=entropy&amp;fit=crop&amp;fm=jpg&amp;h=675&amp;ixjsv=2.1.0&amp;ixlib=rb-0.3.5&amp;q=80&amp;w=1375)">
-					<div class="center-y">
-						<h3>Slider Title #2</h3>
-						<a href="#">View Project</a>
-					</div>
-				</li>
-				<li
-					style="background-image: url(https://images.unsplash.com/photo-1456428199391-a3b1cb5e93ab?crop=entropy&amp;fit=crop&amp;fm=jpg&amp;h=675&amp;ixjsv=2.1.0&amp;ixlib=rb-0.3.5&amp;q=80&amp;w=1375)">
-					<div class="center-y">
-						<h3>Slider Title #3</h3>
-						<a href="#">View Project</a>
-					</div>
-				</li>
-			</ul>
-
-			<ul>
-				<nav> <a href="#"></a> <a href="#"></a> <a href="#"></a> </nav>
-			</ul>
-		</div>
-		</section>
-		<br>
-
 
 		<!--  login modal-->
 
 		<!-- Modal -->
-		<form action ="login" method="post">
+		
 		<div class="modal fade" id="loginModal" role="dialog">
+			<form action="/login" method="post" onsubmit="return login()">
 			<div class="modal-dialog">
 
 				<!-- Modal content-->
@@ -208,18 +176,18 @@
 						</h4>
 					</div>
 					<div class="modal-body" style="padding: 40px 50px;">
-						<form role="form">
+					
 							<div class="form-group">
 								<label for="lemail"><span
 									class="glyphicon glyphicon-envelope"></span> Email</label> <input
-									type="text" class="form-control" id="lusrname"
+									type="text" class="form-control" id="lemail" name="lemail"
 									placeholder="Enter email">
 							</div>
 
 							<div class="form-group">
 								<label for="lpsw"><span
 									class="glyphicon glyphicon-lock"></span> Password</label> <input
-									type="password" class="form-control" id="lpsw"
+									type="password" class="form-control" id="lpsw" name="lpws"
 									placeholder="Enter password">
 							</div>
 
@@ -227,9 +195,10 @@
 								<label><input type="checkbox" value="" checked>Remember
 									me</label>
 							</div>
-							<button type="submit" class="btn btn-success btn-block">
-								<span class="glyphicon glyphicon-off"></span> Login
+							<button type="submit" class="btn btn-success btn-block" id ="btn_login">
+								<span class="glyphicon glyphicon-off" ></span> Login
 							</button>
+							<h6 id = "login_message" ></h6>
 
 							<div class="modal-footer">
 								
@@ -240,76 +209,80 @@
 									Forgot <a href="#">Password?</a>
 								</p>
 							</div>
-						</form>
+						
 					</div>
-
+			
 				</div>
 
 			</div>
+			</form>
 		</div>
-	</form>
+	
 	<!--  sign up modal-->
 
 	<!-- Modal -->
-	<form action ="signup" method="post">
-	<div class="modal modal-adminpro-general default-popup-PrimaryModal fade bounceIn animated" id="signupModal" role="dialog">
+	
+	<div class="modal modal-adminpro-general default-popup-PrimaryModal fade  animated" id="signupModal" role="dialog">
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
 			<div class="modal-content">
-				<div class="modal-header" style="padding: 35px 50px;">
+				<div class="modal-header " style="padding: 35px 50px;">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					
 					<h4>
 						<span class="glyphicon glyphicon-lock"></span> Sign Up
 					</h4>
+					
 				</div>
-				<div class="modal-body" style="padding: 40px 50px;">
-					<form role="form">
-						<div class="form-group">
+				<form action="/signup" method="post" onsubmit="return signup()">
+				<div class="modal-body " style="padding: 40px 50px;">
+					
+						<div class="form-group ">
 							<label for="usrname"><span
 								class="glyphicon glyphicon-user"></span> Username</label> <input
-								type="text" class="form-control" id="usrname"
+								type="text" class="form-control" id="usrname" name="rname"
 								placeholder="Enter user name">
 						</div>
 						<div class="form-group">
-							<label for="usrname"><span
+							<label for="email"><span
 								class="glyphicon glyphicon-envelope"></span> Email</label> <input
-								type="text" class="form-control" id="email"
+								type="text" class="form-control" id="email" name="remail"
 								placeholder="Enter email">
 						</div>
-						<div class="form-group">
-							<label for="usrname"><span
+						<!-- <div class="form-group">
+							<label for="cellphone"><span
 								class="glyphicon glyphicon-phone"></span> Cell phone</label> <input
-								type="text" class="form-control" id="cellphone"
+								type="text" class="form-control" id="cellphone" name="cell_phone"
 								placeholder="Cellphone">
-						</div>
+						</div> -->
 						<div class="form-group">
 							<label for="psw"><span
 								class="glyphicon glyphicon-lock"></span> Password</label> <input
-								type="password" class="form-control" id="psw"
+								type="password" class="form-control" id="psw" name="rpsw"
 								placeholder="Enter password">
 						</div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label for="psw"><span
 								class="glyphicon glyphicon-lock"></span>Repeat Password</label> <input
 								type="password" class="form-control" id="rpsw"
 								placeholder="Enter password">
-						</div>
+						</div> -->
 						<div class="checkbox">
-							<label><input type="checkbox" value="" checked>Remember
+							<label><input type="checkbox" value=""  id="remember_me"checked>Remember
 								me</label>
 						</div>
-						<button type="submit" class="btn btn-success btn-block" onclick="">
+						<button type="submit" class="btn btn-success btn-block" id="btn_signup">
 							<span class="glyphicon glyphicon-off"></span> Sign Up
 						</button>
-					</form>
+						<h6 id = "signup_message" ></h6>
 				</div>
-
+				</form>
 			</div>
-
+	
 		</div>
 	</div>
-	</form>
+	
 	</div>
 
 
@@ -329,8 +302,132 @@
 		});
 	
 	
+	function signup(){
+		
+		var usrname = document.querySelector("#usrname");
+		var email = document.querySelector("#email");
+		var psw = document.querySelector("#psw");
+		var rpsw = document.querySelector("#rpsw");
+		var remember_me = document.querySelector("#remember_me");
+		var signup_message = document.querySelector("#signup_message");
+		var flag = false;
+	
+		 if(empty(usrname.value)){
+			
+			usrname.style="border-color:red";
+			flag = true;
+			signup_message.innerHTML ="Please fillout this field(s)";
+			signup_message.style="color:red";
+		} 
+		if(empty(email.value)){
+	
+			email.style="border-color:red";
+			signup_message.innerHTML ="Please fillout this field(s)";
+			signup_message.style="color:red";
+			flag = true;
+			
+		}
+		if(!validateEmail(email.value) ){
+			
+			email.style="border-color:red";
+			signup_message.innerHTML ="Please fillout this field(s)";
+			signup_message.style="color:red";
+			flag = true;
+			
+		}
+		if(empty(psw.value)){
+			
+			
+			psw.style="border-color:red";
+			signup_message.innerHTML ="Please fillout this field(s)";
+			signup_message.style="color:red";
+			flag = true;
+			
+		}
+			
+		if(!flag){
+			
+		
+			return true;
+			
+		}
+	
+	return false;
+		
+	}
+	
+	function login(){
+		
+		
+		//var usrname = document.querySelector("#usrname");
+		var email = document.querySelector("#lemail");
+		var psw = document.querySelector("#lpsw");
+		var rpsw = document.querySelector("#rpsw");
+		var remember_me = document.querySelector("#remember_me");
+		var signup_message = document.querySelector("#signup_message");
+		var flag = false;
+
+		if(empty(email.value)){
+			
+			
+			email.style="border-color:red";
+			signup_message.innerHTML ="Please fillout this field(s)";
+			signup_message.style="color:red";
+			flag = true;
+			
+		}
+		if(!validateEmail(email.value) ){
+			
+			email.style="border-color:red";
+			signup_message.innerHTML ="Please fillout this field(s)";
+			signup_message.style="color:red";
+			flag = true;
+			
+		}
+		if(empty(psw.value)){
+			
+			
+			psw.style="border-color:red";
+			signup_message.innerHTML ="Please fillout this field(s)";
+			signup_message.style="color:red";
+			flag = true;
+			
+		}
+		
+		
+		if(!flag){
+			
+			//alert("aqui");
+			return true;
+			
+		}
+		//alert("false");
+	return false;
+	}
+	
+
+	function empty(str)
+	{
+	    if (typeof str == 'undefined' || !str || str.length === 0 || str === "" || !/[^\s]/.test(str) || /^\s*$/.test(str) || str.replace(/\s/g,"") === "")
+	    {
+	        return true;
+	    }
+	    else
+	    {
+	        return false;
+	    }
+	}
+	
+	function validateEmail(email) {
+	    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	    return re.test(String(email).toLowerCase());
+	}
+	
+	
+	 
+	
 	</script>
 
-	</div>
+
 </body>
 </html>
